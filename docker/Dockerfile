@@ -14,8 +14,8 @@ RUN apt-get install -y python python-setuptools python-imaging python-pyscard py
 # Checkout sources from Github ...
 RUN git clone https://github.com/oroger/pypassport.git
 WORKDIR pypassport/pypassport/src
-# Switch to release 1.1.0 (comment to use master instead)
-RUN git checkout dev-feat-20160413-dump-no-signature
+# TODO Switch to release 1.1.1 (comment to use master instead)
+# RUN git checkout 1.1.1
 # ... and install from source
 RUN python setup.py install
 
