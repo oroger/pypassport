@@ -1,11 +1,28 @@
-= PyPassport v1.0.0
+= PyPassport
 
 Before running the docker image you should write a script using pypassport (https://github.com/oroger/pypassport)
 
-== Default script - 01.ReadDG1.py
+== Default script 
 
-A default script that reads the first datagroup (DG1) is provided as example in scripts/01.ReadDG1.py. 
+Some sample scripts are provided in the scripts directory. They show how to reads the passport in various ways.
 If you want to use it please replace the MRZ with the one of the passport you gonna read.
+The scripts display all the found information in the output (console + file).
+
+=== 01.ReadDG1.py
+
+Only read the first data group, containing basic information.
+
+=== 02.ReadPassport.py
+
+Read all Data group available in the passport, as well as the Security Object.
+
+=== 03.DumpPassport.py
+
+Read and dump all the passport content to files, using the Golden Reader Tool format.
+
+- Datagroup are dumped as *.bin files.
+- Pictures are dumped as *.jpg files.
+- Certificates are dumped as *.key and *.cer files.
 
 == Build and run the image
 
