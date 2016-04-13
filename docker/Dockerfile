@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
 
+MAINTAINER Olivier Roger <"Olivier.Roger@gmail.com">
 ENV refreshed_at 20160415
 
 RUN apt-get update
