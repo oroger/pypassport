@@ -60,4 +60,9 @@ Example:
 
 Use a volume to mount your scripts instead of the default scripts as follows :
 
-	$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v scripts:/pypassport/pypassport/src/scripts pypassport:1.0.0
+	$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v </absolute/path/to/your/scripts>:/pypassport/pypassport/src/scripts pypassport:1.0.0
+
+	Result of the execution (stdout and stderr) will be shown on the screen in also kept in a file using the same name as the script with ".out" extension in the scripts directory.
+	So 01.readDG1.py becomes 01readDG1.py.out.
+
+	All .out files in the script directory are removed when running the image, do not count on that directory for backup.
