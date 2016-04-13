@@ -8,14 +8,16 @@ RUN apt-get update
 RUN apt-get install -y pcscd libpcsclite1 pcsc-tools libccid git wget swig usbutils 
 
 # Install pypassport dependencies
-RUN apt-get install -y python python-imaging python-pyscard python-crypto python-pyasn1 
+RUN apt-get install -y python python-setuptools python-imaging python-pyscard python-crypto python-pyasn1 
 
-# Checkout sources from Github
+# Checkout sources from Github ...
 RUN git clone https://github.com/oroger/pypassport.git
+# ... and install from source
 WORKDIR pypassport/pypassport/src
+RUN python setup.py install
 
 # Add Docker run script to start the pcscd service before running the script
-ADD script.py ./script.py
+ADD scripts/ ./scripts
 ADD run.sh ./run.sh
 # Default entry point
 CMD ./run.sh

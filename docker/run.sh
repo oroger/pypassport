@@ -3,4 +3,7 @@
 service pcscd start
 #service pcscd status
 
-python script.py
+for file in scripts/*.py
+do
+  python $file
+done

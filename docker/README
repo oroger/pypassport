@@ -1,3 +1,14 @@
+= PyPassport v1.0.0
+
+Before running the docker image you should write a script using pypassport (https://github.com/oroger/pypassport)
+
+== Default script - 01.ReadDG1.py
+
+A default script that reads the first datagroup (DG1) is provided as example in scripts/01.ReadDG1.py. 
+If you want to use it please replace the MRZ with the one of the passport you gonna read.
+
+== Build and run the image
+
 In order to access the USB reader, the image must be start with "privileged" access to host (where the USB reader is located)
 
 $ docker build .
@@ -5,7 +16,7 @@ $ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb <imageId>
 
 Example:
 
-	~/git/pypassport/docker$ docker build .
+	~/git/pypassport/docker$ docker build -t pypassport:1.0.0 .
 
 	Sending build context to Docker daemon 4.608 kB
 	Sending build context to Docker daemon 
@@ -41,6 +52,12 @@ Example:
 	Removing intermediate container 76f645544c88
 	Successfully built 2c15c78bff0f
 
-	$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb 2c15c78bff0f
-	
+	$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb pypassport:1.0.0
+
 	{'5F05': '8', '5F04': '9', '5F07': '6', '5F06': '8', '59': '150701', '5F03': 'P<', '5F02': '0', '5F5B': 'ROGER<<OLIVIER<VINCENT<MICHAEL<<<<<<<<<', '5F1F': 'P<BELROGER<<OLIVIER<VINCENT<MICHAEL<<<<<<<<<EI123456<9BEL8001018M1507010<<<<<<<<<<<<<<06', '53': '<<<<<<<<<<<<<<', '5F2C': 'BEL', '5F57': '800101', '5F28': 'BEL', '5F35': 'M', '5A': 'EI123456<'}
+
+= Using the image from the repository
+
+Use a volume to mount your scripts instead of the default scripts as follows :
+
+	$ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb -v scripts:/pypassport/pypassport/src/scripts pypassport:1.0.0
