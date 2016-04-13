@@ -22,14 +22,17 @@ setup(
     version = "1.0",
     description='Python Biometric Passport API',
     author='Jean-Francois Houzard & Olivier Roger',
-    author_email='jhouzard@gmail.com & folkenda@gmail.com',
+    author_email='jhouzard@gmail.com & olivier.roger@gmail.com',
     url='http://code.google.com/p/pypassport/downloads/list',
     packages = find_packages(),
     
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires = ['setuptools', 'pyCrypto', 'pyasn1', 'pyscard', 'PIL'],
+    install_requires = ['setuptools', 'pyasn1'],
+
+    # Full dependies
+    # install_requires = ['setuptools', 'pyCrypto', 'pyasn1', 'pyscard', 'PIL'], 
 
     package_data = {'': ['*.py'],
                     'pypassport': ['README', 'LICENSE'],
