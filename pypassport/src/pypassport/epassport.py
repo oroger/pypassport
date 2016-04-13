@@ -503,10 +503,12 @@ class EPassport(dict, logger.Logger):
         dgd = datagroup.DataGroupDump(directory, extension)
         dgd.dump(self, format)
         
-        cpt=0
-        for sig in self.getSignatures():
-            dgd.dumpData(sig, "signature" + str(cpt) + ".jpg")
-            cpt += 1
+        signatures = self.getSignatures()
+        if signatures is not None:
+            cpt=0
+            for sig in signatures:
+                dgd.dumpData(sig, "signature" + str(cpt) + ".jpg")
+                cpt += 1
             
         cpt=0
         for face in self.getFaces():
