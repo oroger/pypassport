@@ -10,13 +10,13 @@ RUN apt-get install -y pcscd libpcsclite1 pcsc-tools libccid git wget swig usbut
 # Install pypassport dependencies
 RUN apt-get install -y python python-setuptools python-imaging python-pyscard python-crypto python-pyasn1 
 
-ENV VERSION 1.1.1
+ARG VERSION=master
 
 # Checkout sources from Github ...
 RUN git clone https://github.com/oroger/pypassport.git
 WORKDIR pypassport/pypassport/src
-# Switch to release 1.1.1 (comment to use master instead)
-RUN git checkout 1.1.1
+# Switch to specified release/branch (if provided using --build-arg VERSION=<branch or tag name>)
+RUN git checkout $VERSION
 # ... and install from source
 RUN python setup.py install
 
