@@ -15,8 +15,8 @@ ENV VERSION 1.1.1
 # Checkout sources from Github ...
 RUN git clone https://github.com/oroger/pypassport.git
 WORKDIR pypassport/pypassport/src
-# Switch to release 1.1.1 (comment to use master instead)
-RUN git checkout 1.1.1
+# Switch to $VERSION (comment to use master instead)
+RUN git checkout $VERSION
 # ... and install from source
 RUN python setup.py install
 
